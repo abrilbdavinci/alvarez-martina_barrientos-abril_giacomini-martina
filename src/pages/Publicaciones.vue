@@ -42,7 +42,7 @@ export default {
             <AppH1>Publicaciones</AppH1>
 
             <RouterLink v-if="currentUser" to="/crear-post"
-                class="bg-[#29D370] hover:bg-[#179BAE] text-white font-medium px-6 py-2 rounded-[20px] transition-all duration-200">
+                class="bg-(--color-primary-kalm) hover:bg-(--color-dark-kalm) text-white font-medium px-6 py-2 rounded-[20px] transition-all duration-200">
                 Crear nueva publicación
             </RouterLink>
         </div>
@@ -52,7 +52,7 @@ export default {
             <article v-for="post in posts" :key="post.id"
                 class="bg-[#E9F3F4] border border-[#d6e9eb] rounded-[20px] p-5 flex flex-col justify-between hover:scale-[1.02] transition-transform duration-200">
                 <div>
-                    <p class="text-[#179BAE] font-semibold mb-1">
+                    <p class="text-(--color-primary-kalm) font-semibold mb-1">
                         {{ post.user_email }}
                     </p>
                     <PostTheme class="text-[#FF7A18] font-medium mb-2">
@@ -75,7 +75,7 @@ export default {
                 Sé el primero en compartir tu rutina o recomendación.
             </p>
             <RouterLink v-if="currentUser" to="/crear-post"
-                class="inline-block mt-6 bg-[#179BAE] text-white px-6 py-2 rounded-[20px] hover:bg-[#006165] transition">
+                class="inline-block mt-6 bg-(--color-primary-kalm) text-white px-6 py-2 rounded-[20px] hover:bg-[#006165] transition">
                 Crear mi primera publicación
             </RouterLink>
         </div>

@@ -30,9 +30,9 @@ export default {
 </script>
 
 <template>
-    <section class="flex justify-center items-center w-full max-w-5xl mx-auto px-4 py-10">
+    <section class="flex justify-center items-center w-full max-w-5xl mx-auto px-4 py-10 mt-15">
         <div class="bg-[#E9F3F4] w-5xl max-w-md p-8 rounded-[20px] shadow-sm shadow-gray-300">
-            <AppH1 class="text-center mb-6 text-[#006165]">Ingresar a mi cuenta</AppH1>
+            <AppH1 class="text-center mb-6 text-(--color-dark-kalm)">Ingresar a mi cuenta</AppH1>
 
             <form @submit.prevent="handleSubmit" class="flex flex-col gap-4">
                 <div>
@@ -41,7 +41,7 @@ export default {
                         type="email"
                         id="email"
                         v-model="user.email"
-                        class="w-full p-3 rounded-[20px] border border-[#50B7C5] focus:outline-none focus:ring-2 focus:ring-[#179BAE] transition"
+                        class="w-full p-3 rounded-[20px] border border-(--color-primary-kalm) focus:outline-none focus:ring-2 focus:ring-(--color-primary-kalm) transition"
                     />
                 </div>
 
@@ -51,14 +51,14 @@ export default {
                         type="password"
                         id="password"
                         v-model="user.password"
-                        class="w-full p-3 rounded-[20px] border border-[#50B7C5] focus:outline-none focus:ring-2 focus:ring-[#179BAE] transition"
+                        class="w-full p-3 rounded-[20px] border border-(--color-primary-kalm) focus:outline-none focus:ring-2 focus:ring-(--color-primary-kalm) transition"
                     />
                 </div>
 
                 <button
                     type="submit"
                     :disabled="loading"
-                    class="mt-2 bg-[#179BAE] text-white py-2 rounded-[20px] shadow-sm shadow-gray-300 hover:bg-[#006165] transition"
+                    class="mt-2 bg-(--color-primary-kalm) text-white py-2 rounded-[20px] shadow-sm shadow-gray-300 hover:bg-(--color-dark-kalm) transition"
                 >
                     {{ loading ? 'Ingresando...' : 'Ingresar' }}
                 </button>
