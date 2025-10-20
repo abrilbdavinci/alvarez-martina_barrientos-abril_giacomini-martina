@@ -18,8 +18,8 @@ export default {
         async handleSubmit() {
             try {
                 this.loading = true;
-                await register(this.user.email, this.user.password);
-                this.$router.push('/mi-perfil');
+                register(this.user.email, this.user.password);
+                this.$router.push('/publicaciones');
             } catch (error) {
                 console.error("Error: ", error);
             }
@@ -30,39 +30,35 @@ export default {
 </script>
 
 <template>
-    <section class="flex justify-center items-center w-full max-w-5xl mx-auto px-4 py-10">
-        <div class="bg-[#E9F3F4] w-5xl max-w-md p-8 rounded-[20px] shadow-sm shadow-gray-300 ">
-            <AppH1 class="text-center mb-6 text-[#006165]">Crear una cuenta</AppH1>
+    <div class="w-full justify-center items-centermx-auto px-4 py-10">
+        <AppH1 class="text-center mb-8 text-[#006165] font-bold text-3xl">
+                Crear una cuenta
+            </AppH1>
 
-            <form @submit.prevent="handleSubmit" class="flex flex-col gap-4">
-                <div>
-                    <label for="email" class="block text-[#4B4B4B] mb-1">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        v-model="user.email"
-                        class="w-full p-3 rounded-[20px] border border-[#50B7C5] focus:outline-none focus:ring-2 focus:ring-[#179BAE] transition"
-                    />
+            <form @submit.prevent="handleSubmit" class="flex flex-col gap-6">
+                <!-- Campo Email -->
+                <div class="flex flex-col">
+                    <label for="email" class="block text-[#4B4B4B] mb-2 font-medium">
+                        Email
+                    </label>
+                    <input type="email" id="email" v-model="user.email"
+                        class="w-full p-4 rounded-[100px] border border-[#50B7C5] bg-white text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#179BAE] transition duration-200" />
                 </div>
 
-                <div>
-                    <label for="password" class="block text-[#4B4B4B] mb-1">Contraseña</label>
-                    <input
-                        type="password"
-                        id="password"
-                        v-model="user.password"
-                        class="w-full p-3 rounded-[20px] border border-[#50B7C5] focus:outline-none focus:ring-2 focus:ring-[#179BAE] transition"
-                    />
+                <!-- Campo Contraseña -->
+                <div class="flex flex-col">
+                    <label for="password" class="block text-[#4B4B4B] mb-2 font-medium">
+                        Contraseña
+                    </label>
+                    <input type="password" id="password" v-model="user.password"
+                        class="w-full p-4 rounded-[100px] border border-[#50B7C5] bg-white text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#179BAE] transition duration-200" />
                 </div>
 
-                <button
-                    type="submit"
-                    :disabled="loading"
-                    class="mt-2 bg-[#179BAE] text-white py-2 rounded-[20px] shadow-sm shadow-gray-300 hover:bg-[#006165] transition"
-                >
+                <!-- Botón -->
+                <button type="submit" :disabled="loading"
+                    class="mt-4 w-full p-4 bg-[#179BAE] text-[#E9F3F4] font-semibold rounded-[100px] shadow-md disabled:opacity-70 hover:bg-[#147a8a] transition-colors duration-200">
                     {{ loading ? 'Creando...' : 'Crear cuenta' }}
                 </button>
             </form>
-        </div>
-    </section>
+    </div>
 </template>

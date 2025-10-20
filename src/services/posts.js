@@ -17,7 +17,7 @@ export async function fetchPosts() {
 }
 
 // Crear un nuevo post
-export const createPost = async (post) => {
+export const createPost =  async(post) => {
   const { data, error } = await supabase
     .from("posts")
     .insert([post])
