@@ -1,9 +1,7 @@
 // Servicio que ofrece las funciones para interactuar con la tabla de "posts".
 import { supabase } from "./supabase";
 
-/* =============================
-   🟢 CREAR UN NUEVO POST
-   ============================= */
+/*  CREAR UN NUEVO POST*/
 export async function createPost({ sender_id, user_email, theme, content }) {
   // Insertamos un nuevo registro en la tabla "posts".
   const { data, error } = await supabase
@@ -25,11 +23,9 @@ export async function createPost({ sender_id, user_email, theme, content }) {
   return data;
 }
 
-/* =============================
-   🟣 TRAER TODOS LOS POSTS
-   ============================= */
+/* TRAER TODOS LOS POSTS*/
 export async function fetchPosts() {
-  // Traemos los posts más recientes primero.
+  // Traer PRIMERO los posts más recientes
   const { data, error } = await supabase
     .from("posts")
     .select("id, sender_id, user_email, theme, content, created_at")
@@ -43,9 +39,7 @@ export async function fetchPosts() {
   return data;
 }
 
-/* =============================
-   🔵 TRAER POSTS DE UN USUARIO
-   ============================= */
+/*TRAER POSTS DE UN USUARIO */
 export async function fetchPostsByUserId(sender_id) {
   if (!sender_id) {
     throw new Error("[posts.js fetchPostsByUserId] sender_id es obligatorio");
@@ -65,9 +59,7 @@ export async function fetchPostsByUserId(sender_id) {
   return data;
 }
 
-/* =============================
-   🟠 SUSCRIBIRSE A NUEVOS POSTS
-   ============================= */
+/* SUSCRIBIRSE A NUEVOS POSTS */
 export function subscribeToNewPosts(callback) {
   // Creamos un canal para escuchar los nuevos posts en tiempo real.
   const postsChannel = supabase.channel("posts-realtime");

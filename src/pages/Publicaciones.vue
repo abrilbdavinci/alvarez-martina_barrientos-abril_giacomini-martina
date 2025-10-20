@@ -53,7 +53,7 @@ export default {
 </script>
 
 <template>
-    <section class="w-full max-w-5xl mx-auto px-4 py-10">
+    <section class="w-full max-w-5xl mx-auto  py-10">
         <div class="flex justify-between items-center mb-6">
             <AppH1>Publicaciones</AppH1>
             <RouterLink v-if="currentUser" to="/crear-post"

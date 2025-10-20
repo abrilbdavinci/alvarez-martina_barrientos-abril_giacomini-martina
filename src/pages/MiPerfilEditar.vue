@@ -35,7 +35,7 @@ export default {
                 const updatedProfile = await fetchUserProfileById(this.formData.id);
                 this.formData = { ...this.formData, ...updatedProfile };
 
-                // Redirigir automáticamente al perfil actualizado
+                // Redirigir al perfil actualizado
                 this.$router.push('/mi-perfil');
             } catch (error) {
                 console.error("Error al actualizar perfil:", error);
@@ -79,7 +79,6 @@ export default {
     },
 
     mounted() {
-        // Mantener exactamente la estructura indicada
         unsubscribeFromAuth = subscribeToAuthStateChanges(async newUserState => {
             this.formData = {
                 display_name: newUserState.display_name,
@@ -104,15 +103,15 @@ export default {
 </script>
 
 <template>
-    <section class="w-full mx-auto px-4 py-10">
-        <!-- Título -->
+    <section class="w-full mx-auto  py-10">
+        
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-6">
             <AppH1 class="text-3xl font-bold text-[#006165] mb-2 sm:mb-0">
                 Editar mi perfil
             </AppH1>
         </div>
 
-        <!-- Formulario -->
+        
         <form @submit.prevent="handleSubmit" class="mb-10 p-6">
             <div class="mb-3">
                 <label for="bio" class="block mb-1 font-semibold text-[#006165]">Biografía</label>

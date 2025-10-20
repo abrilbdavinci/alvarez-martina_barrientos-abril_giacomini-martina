@@ -30,13 +30,13 @@ export default {
 </script>
 
 <template>
-    <div class="w-full justify-center items-centermx-auto px-4 py-10">
+    <div class="w-full justify-center items-centermx-auto  py-10">
         <AppH1 class="text-center mb-8 text-[#006165] font-bold text-3xl">
                 Ingresar a mi cuenta
             </AppH1>
 
             <form @submit.prevent="handleSubmit" class="flex flex-col gap-6">
-                <!-- Campo Email -->
+                
                 <div class="flex flex-col">
                     <label for="email" class="block text-[#4B4B4B] mb-2 font-medium">
                         Email
@@ -48,8 +48,6 @@ export default {
                         class="w-full p-4 rounded-[100px] border border-[#50B7C5] bg-white text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#179BAE] transition duration-200"
                     />
                 </div>
-
-                <!-- Campo Contraseña -->
                 <div class="flex flex-col">
                     <label for="password" class="block text-[#4B4B4B] mb-2 font-medium">
                         Contraseña
@@ -61,8 +59,6 @@ export default {
                         class="w-full p-4 rounded-[100px] border border-[#50B7C5] bg-white text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#179BAE] transition duration-200"
                     />
                 </div>
-
-                <!-- Botón -->
                 <button
                     type="submit"
                     :disabled="loading"

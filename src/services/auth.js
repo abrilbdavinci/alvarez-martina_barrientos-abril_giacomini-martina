@@ -6,9 +6,7 @@ import {
   updateUserProfile,
 } from "./user-profiles";
 
-/* ==========================================================
-| Estado global del usuario y sistema de observadores
-|===========================================================*/
+/* Estado global del usuario y sistema de observers*/
 let user = {
   id: null,
   email: null,
@@ -19,13 +17,11 @@ let user = {
 
 let observers = [];
 
-/* ==========================================================
-| Inicialización: intento de obtener usuario actual
-|===========================================================*/
+/* intentar de obtener usuario actual*/
 fetchCurrentAuthUserData();
 
 /**
- * Intenta obtener los datos del usuario autenticado actualmente
+ * Intentar obtener los datos del usuario autenticado actualmente
  * desde Supabase al cargar la app.
  */
 async function fetchCurrentAuthUserData() {
@@ -43,13 +39,11 @@ async function fetchCurrentAuthUserData() {
 
   notifyAll();
 
-  // También traemos su perfil completo desde la tabla user_profiles
+  // Traer perfil completo desde la tabla user_profiles
   await fetchFullProfile();
 }
 
-/* ==========================================================
-| Traer perfil completo desde user_profiles
-|===========================================================*/
+/* Traer perfil completo desde user_profiles*/
 async function fetchFullProfile() {
   try {
     if (!user.id) return; // Evita error "uuid: undefined"
@@ -70,12 +64,10 @@ async function fetchFullProfile() {
   }
 }
 
-/* ==========================================================
-| Registro (signUp)
-|===========================================================*/
+/* Registro*/
 /**
- * Registra un nuevo usuario con email y contraseña
- * y crea su perfil en la tabla user_profiles.
+ * Registrar un nuevo usuario con email y contraseña
+ * se crea el perfil en la tabla user_profiles.
  */
 export async function register(email, password) {
   const { data, error } = await supabase.auth.signUp({
@@ -96,16 +88,13 @@ export async function register(email, password) {
   };
   notifyAll();
 
-  // Crear registro en la tabla user_profiles
   await createUserProfile({
     id: data.user.id,
     email: data.user.email,
   });
 }
 
-/* ==========================================================
-| Login
-|===========================================================*/
+/* Login*/
 /**
  * Inicia sesión con email y contraseña
  */
@@ -131,9 +120,7 @@ export async function login(email, password) {
   fetchFullProfile();
 }
 
-/* ==========================================================
-| Logout
-|===========================================================*/
+/* Logout*/
 export async function logout() {
   await supabase.auth.signOut();
 
@@ -148,12 +135,9 @@ export async function logout() {
   notifyAll();
 }
 
-/* ==========================================================
-| Actualización de datos del usuario
-|===========================================================*/
+/* Actualizar de datos del usuario*/
 /**
- * Actualiza el perfil del usuario tanto en Supabase
- * como en la variable local `user`.
+ * Actualiza el perfil del usuario en Supabase y en la variable user.
  */
 export async function updateAuthUser(data) {
   try {
@@ -173,9 +157,7 @@ export async function updateAuthUser(data) {
   }
 }
 
-/* ==========================================================
-| Observers
-|===========================================================*/
+/* Observers*/
 /**
  * Suscribe una función para escuchar cambios en el estado del usuario.
  * Devuelve una función que permite cancelar la suscripción.
@@ -186,10 +168,10 @@ export function subscribeToAuthStateChanges(callback) {
   observers.push(callback);
   console.log("[auth.js] Nuevo observer agregado. Total:", observers.length);
 
-  // Notificamos al observer con el estado actual inmediatamente
+  // Notifica al observer con el estado actual
   notify(callback);
 
-  // Escucha cambios en la sesión de Supabase en tiempo real
+  // ESCUCHA cambios en la sesión de Supabase en tiempo real
   const { data: subscription } = supabase.auth.onAuthStateChange(
     (_event, session) => {
       const newUserState = session?.user
@@ -200,30 +182,28 @@ export function subscribeToAuthStateChanges(callback) {
 
       notifyAll();
 
-      // Si hay usuario, traemos el perfil completo
+      // Si hay usuario trae el perfil completo
       if (session?.user) fetchFullProfile();
     }
   );
 
-  // Retornamos función para cancelar suscripción y evitar memory leaks
+  // Retorna una función para cancelar suscripción y evitar memory leaks
   return () => {
     observers = observers.filter((obs) => obs !== callback);
     console.log("[auth.js] Observer eliminado. Total:", observers.length);
   };
 }
 
-/* ==========================================================
-| Funciones internas para notificar cambios
-|===========================================================*/
+/* Funciones internas para notificar cambios*/
 /**
- * Notifica un solo observer pasándole una copia del usuario.
+ * Notificar un solo observer y le pasa una COPIA (...) del usuario.
  */
 function notify(callback) {
   callback({ ...user });
 }
 
 /**
- * Notifica a todos los observers con el estado actual.
+ * Notificar a todos los observers con el estado actual.
  */
 function notifyAll() {
   observers.forEach((cb) => notify(cb));

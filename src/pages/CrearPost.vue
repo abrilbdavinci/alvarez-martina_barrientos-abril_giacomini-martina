@@ -40,10 +40,10 @@ export default {
           content: this.post.content,
         });
 
-        // Limpiamos el contenido
+        // Limpiar contenido
         this.post.content = '';
 
-        // Redirigimos a publicaciones
+        // Redirige a la ruta de las publicaciones
         this.$router.push('/publicaciones');
       } catch (error) {
         console.error('Error al crear post:', error);
@@ -68,14 +68,14 @@ export default {
 </script>
 
 <template>
-  <div class="flex justify-center items-start min-h-[80vh] px-4">
+  <div class="flex justify-center items-start min-h-[80vh] ">
     <div class="w-5xl p-8 rounded-[100px] flex flex-col gap-6">
-      <!-- Título -->
+      
       <AppH1 class="text-[#006165] text-center text-2xl">
         Crear nuevo post
       </AppH1>
 
-      <!-- Formulario -->
+      
       <form @submit.prevent="handleSubmit" class="flex flex-col gap-4">
         <!-- Tema -->
         <div class="flex flex-col gap-1">
@@ -89,7 +89,7 @@ export default {
           </select>
         </div>
 
-        <!-- Contenido -->
+        
         <div class="flex flex-col gap-1">
           <label class="text-[#4B4B4B] font-medium">Contenido</label>
           <textarea
@@ -99,7 +99,7 @@ export default {
           ></textarea>
         </div>
 
-        <!-- Botón Publicar -->
+        
         <button
           type="submit"
           :disabled="loading"

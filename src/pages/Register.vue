@@ -30,7 +30,7 @@ export default {
 </script>
 
 <template>
-    <div class="w-full justify-center items-centermx-auto px-4 py-10">
+    <div class="w-full justify-center items-centermx-auto  py-10">
         <AppH1 class="text-center mb-8 text-[#006165] font-bold text-3xl">
                 Crear una cuenta
             </AppH1>

@@ -44,7 +44,7 @@ export default {
         fetchPosts(),
       ]);
 
-      // Asegurarse de que el perfil siempre tenga las keys necesarias
+      // Asegura que el perfil siempre tenga las keys necesarias
       this.user = {
         id: profile?.id || userId,
         email: profile?.email || '',
@@ -60,7 +60,7 @@ export default {
       this.error = err.message;
     }
 
-    // Escuchar cambios de sesión (opcional)
+    // Escuchar cambios de sesión
     subscribeToAuthStateChanges(newUser => {
       console.log('Cambio de sesión detectado:', newUser);
     });
@@ -70,7 +70,7 @@ export default {
 
 
 <template>
-  <section class="w-full mx-auto px-4 py-10">
+  <section class="w-full mx-auto  py-10">
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-6">
       <AppH1 class="text-3xl font-bold text-[#006165] mb-2 sm:mb-0">
         Perfil de {{ user.display_name || user.email }}

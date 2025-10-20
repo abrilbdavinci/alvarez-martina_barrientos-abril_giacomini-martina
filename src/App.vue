@@ -9,6 +9,7 @@ export default {
                 id: null,
                 email: null,
             },
+            
         }
     },
     methods: {
@@ -30,11 +31,12 @@ export default {
         <!-- Logo / título -->
         <div class="brand flex items-center gap-2">
             <img src="/favicon/favicon.ico" alt="" class="w-10 h-10 sm:w-12 sm:h-12 md:w-8 md:h-8" />
-            <RouterLink to="/"><p class="hidden md:block text-lg md:text-2xl font-bold text-[#006165] whitespace-nowrap">
-                Kälm <span class="text-[#179BAE]">| Skincare & Haircare</span>
-            </p>
+            <RouterLink to="/">
+                <p class="hidden md:block text-lg md:text-2xl font-bold text-[#006165] whitespace-nowrap">
+                    Kälm <span class="text-[#179BAE]">| Skincare & Haircare</span>
+                </p>
             </RouterLink>
-            
+
         </div>
 
         <!-- Menú -->
@@ -44,7 +46,7 @@ export default {
             <template v-if="user.id === null">
                 <li>
                     <RouterLink to="/login"
-                        class="px-4 py-2 bg-[#50B7C5] text-white rounded-[100px] transition block text-center">
+                        class="px-6 py-2 bg-[#50B7C5] text-white rounded-[100px] transition block text-center">
                         Ingresar
                     </RouterLink>
                 </li>
@@ -67,11 +69,12 @@ export default {
                         Mi perfil
                     </RouterLink>
                 </li>
-                <li>{{ user.email }}</li>
+                <li class="text-[#727F81FF]">{{ user.email }}</li>
                 <li>
                     <form action="#" @submit.prevent="handleLogout" class="m-0">
                         <button type="submit"
                             class="px-4 py-2 bg-[#F8393C] text-white rounded-[100px] transition block text-center">
+                            <i class="fa fa-power-off"></i>
                             Cerrar sesión
                         </button>
                     </form>
@@ -80,7 +83,8 @@ export default {
         </ul>
     </nav>
 
-    <main class="mx-auto w-5xl flex flex-col justify-start items-center min-h-screen pt-24 pb-24 px-4 bg-white text-[#1A1A1A]">
+    <main
+        class="mx-auto max-w-7xl flex flex-col justify-start items-center min-h-screen pt-24 pb-24 px-4 sm:px-4 md:px-4 lg:px-0 bg-white text-[#1A1A1A]">
         <RouterView />
     </main>
 
