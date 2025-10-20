@@ -29,7 +29,7 @@ export default {
 
         <!-- Logo / título -->
         <div class="brand flex items-center gap-2">
-            <img src="/favicon.ico" alt="" class="w-10 h-10 sm:w-12 sm:h-12 md:w-8 md:h-8" />
+            <img src="/favicon/favicon.ico" alt="" class="w-10 h-10 sm:w-12 sm:h-12 md:w-8 md:h-8" />
             <RouterLink to="/"><p class="hidden md:block text-lg md:text-2xl font-bold text-[#006165] whitespace-nowrap">
                 Kälm <span class="text-[#179BAE]">| Skincare & Haircare</span>
             </p>
